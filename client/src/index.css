@@ -1,0 +1,494 @@
+@import "@fontsource/inter/latin-300.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/poppins/latin-400.css";
+@import "@fontsource/poppins/latin-500.css";
+@import "@fontsource/poppins/latin-600.css";
+@import "@fontsource/poppins/latin-700.css";
+@import "@fontsource/poppins/latin-800.css";
+@import "@fontsource/poppins/latin-900.css";
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #1e3a5f;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #1e3a5f;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #93c5fd;
+  --chart-2: #1e3a5f;
+  --chart-3: #f97316;
+  --chart-4: #1e40af;
+  --chart-5: #1e3a8a;
+  --radius: 0.65rem;
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #374151;
+  --muted: #e5e7eb;
+  --muted-foreground: #6b7280;
+  --accent: #f3f4f6;
+  --accent-foreground: #1f2937;
+  --destructive: #dc2626;
+  --destructive-foreground: #fafafa;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #3b82f6;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f2937;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #3b82f6;
+}
+
+.dark {
+  --primary: var(--color-blue-700);
+  --primary-foreground: var(--color-blue-50);
+  --sidebar-primary: var(--color-blue-500);
+  --sidebar-primary-foreground: var(--color-blue-50);
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.85 0.005 65);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.85 0.005 65);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.85 0.005 65);
+  --secondary: oklch(0.24 0.006 286.033);
+  --secondary-foreground: oklch(0.7 0.005 65);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground:  oklch(0.92 0.005 65);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --chart-1: var(--color-blue-300);
+  --chart-2: var(--color-blue-500);
+  --chart-3: var(--color-blue-600);
+  --chart-4: var(--color-blue-700);
+  --chart-5: var(--color-blue-800);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.85 0.005 65);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+/* Home: portada compacta y tarjetas de la referencia del propietario. */
+.reference-hero{position:relative;min-height:420px;height:clamp(360px,34vw,510px);background-size:cover;background-position:center 40%;display:flex;align-items:center;justify-content:center;padding:42px 20px;overflow:hidden}
+.reference-hero-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,29,43,.39),rgba(18,29,43,.38) 60%,rgba(18,29,43,.12))}
+.reference-hero-content{position:relative;text-align:center;color:white;max-width:850px;text-shadow:0 2px 6px #0005}
+.reference-hero h1{font-size:clamp(29px,3.3vw,48px);font-weight:800;line-height:1.2;margin:0 0 21px;letter-spacing:-.025em}
+.reference-hero-content>p{font-size:clamp(16px,1.7vw,21px);line-height:1.5;font-weight:500;margin-bottom:26px}
+.reference-hero-actions{display:flex;justify-content:center;gap:16px;text-shadow:none}
+.reference-hero-actions a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:185px;padding:14px 24px;border-radius:4px;font-weight:800;font-size:16px;box-shadow:0 3px 12px #0002;transition:filter .2s}
+.reference-hero-actions a:hover{filter:brightness(.92)}
+.reference-budget{background:#1597ee;color:white}.reference-whatsapp{background:#39d91c;color:white}
+.reference-brand-strip{background:linear-gradient(#fff,#f5f7fa);border-bottom:1px solid #e9edf1;padding:25px 22px}
+.reference-brands{max-width:960px;margin:auto;display:flex;align-items:center;justify-content:center;gap:48px}
+.reference-somfy{font-size:30px;font-weight:800;color:#989da3;letter-spacing:-1.5px}.reference-somfy>span{color:#c0c4c8}
+.reference-velux{background:#ed3239;color:#fff;font-size:21px;font-weight:900;font-style:italic;letter-spacing:1px;padding:2px 9px;line-height:1.2}
+.reference-bubendorff{font-size:21px;font-weight:800;color:#7492b1;letter-spacing:.025em}
+.reference-rating{text-align:center;white-space:nowrap}.reference-stars{color:#f4cf3b;font-size:20px;letter-spacing:1px}.reference-rating-score{font-size:12px;color:#778390;margin-left:9px}.reference-rating small{display:block;font-size:10px;color:#84909c;margin-top:3px}
+.reference-services{padding:40px 20px 48px;background:#fff;scroll-margin-top:90px}.reference-services-inner{max-width:1040px;margin:auto}.reference-services h2{text-align:center;font-size:28px;font-weight:700;color:#2089d5;margin-bottom:28px}
+.reference-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.reference-service-card{padding:24px 20px 20px;text-align:center;background:linear-gradient(#fff,#fafbfc);border:1px solid #edf0f4;border-radius:3px;box-shadow:0 3px 16px #233f5c04}.reference-service-icon{position:relative;color:#208fdf;width:89px;height:76px;margin:0 auto 8px}.reference-service-icon svg:first-child{width:89px;height:76px}.reference-icon-overlay{position:absolute;right:-5px;bottom:3px;background:#fbfcfd;border-radius:50%;padding:3px;color:#168ade}
+.reference-service-card h3{font-size:20px;font-weight:750;color:#1578bc;margin:0 0 8px}.reference-service-summary{font-size:14px;color:#7c8793;line-height:1.5;max-width:185px;min-height:43px;margin:0 auto 18px}.reference-service-price{color:#147bbe;font-size:14px;font-weight:700;margin:0 0 10px}.reference-service-price strong{font-size:22px;margin-left:3px}.reference-service-more{color:#2078b1;font-size:13px;font-weight:700;background:none;border:0;padding:7px 12px}.reference-service-more span{margin-left:4px}.reference-service-detail{border-top:1px solid #e4edf3;font-size:13px;color:#66778a;padding-top:16px;margin-top:10px;line-height:1.6}.reference-service-detail a{color:#147bbe;font-weight:700}
+#precios{scroll-margin-top:90px}
+@media(max-width:640px){.reference-home-nav>div{padding-top:12px;padding-bottom:12px;gap:12px}.reference-home-nav>div>div:first-child{font-size:17px}.reference-home-nav a{padding:9px 12px}.reference-hero{min-height:365px;height:auto;background-position:62% center;padding:50px 18px}.reference-hero h1{font-size:29px;line-height:1.22}.reference-hero-actions{gap:10px}.reference-hero-actions a{min-width:0;flex:1;max-width:190px;font-size:13px;padding:12px 13px}.reference-brands{gap:16px;flex-wrap:wrap}.reference-brand-strip{padding:17px 15px}.reference-somfy{font-size:23px}.reference-velux{font-size:17px}.reference-bubendorff{font-size:16px}.reference-rating{flex-basis:100%}.reference-services{padding:30px 16px}.reference-services h2{font-size:25px}.reference-service-grid{gap:12px;grid-template-columns:1fr}.reference-service-card{padding:22px}.reference-service-summary{min-height:0;max-width:none}.reference-floating{bottom:12px;right:12px;gap:7px}.reference-floating a{padding:10px}.reference-floating a>span:last-child{display:none}.reference-floating a>span:first-child{padding:2px}}
+@media(prefers-reduced-motion:reduce){.reference-hero-actions a{transition:none}}
+@media(min-width:641px){.reference-hero{min-height:350px;height:clamp(350px,28vw,420px)}.reference-brand-strip{padding-top:18px;padding-bottom:18px}.reference-services{padding-top:30px}.reference-services h2{margin-bottom:24px}.reference-service-card{padding-top:20px;padding-bottom:16px}.reference-floating a{padding:10px}.reference-floating a>span:last-child{display:none}.reference-floating a>span:first-child{padding:2px}}
+
+.coverage-map-frame{position:relative;background:#fff}.coverage-map-frame:fullscreen{display:flex;flex-direction:column}.coverage-map-frame:fullscreen .coverage-map{height:auto!important;flex:1}.coverage-map{z-index:0;background:#e8edf2;font-family:Inter,sans-serif}.coverage-toolbar{display:flex;align-items:center;gap:8px;padding:10px 12px;background:#f8fafc;border-bottom:1px solid #e2e8f0;color:#1e40af}.coverage-toolbar select{min-width:0;flex:1;border:1px solid #cbd5e1;border-radius:6px;padding:8px;font-size:13px;background:white}.coverage-toolbar button{border:1px solid #bfdbfe;background:white;border-radius:6px;padding:8px 10px;font-size:12px;font-weight:700}.coverage-toolbar button:disabled,.coverage-toolbar select:disabled{opacity:.5}.coverage-marker{background:transparent;border:0;filter:drop-shadow(0 2px 3px #0004)}.coverage-marker:focus{outline:3px solid #2563eb;outline-offset:4px;border-radius:10px}.coverage-popup strong{font-size:15px;color:#1e3a8a}.coverage-popup p{font-size:12px;line-height:1.5;margin:10px 0}.coverage-popup a{display:block;font-size:12px;font-weight:700;margin:10px 0;color:#1d4ed8}.coverage-popup small{font-size:10px;color:#64748b}.coverage-map-error{margin:0;padding:9px 12px;background:#fff7ed;color:#9a3412;font-size:12px}.coverage-map-error a{text-decoration:underline}.coverage-map .leaflet-control-attribution{font-size:10px}@media(max-width:480px){.coverage-toolbar{gap:5px;padding:8px}.coverage-toolbar button{padding:8px 6px}}
+
+.persora-brand-logo{display:block;width:170px;height:auto;max-height:78px;object-fit:contain}.reference-home-nav>div{padding-top:8px;padding-bottom:8px}footer .persora-brand-logo{background:white;padding:8px;border-radius:6px;max-height:none;width:180px}@media(max-width:640px){.persora-brand-logo{width:130px;max-height:64px}.reference-home-nav>div{padding-top:7px;padding-bottom:7px}}
+
+/* Primera etapa del rediseño: cabecera y portada, sin afectar otras secciones. */
+.persora-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e2e8f0;color:#0b3550}
+.persora-header-inner{max-width:1280px;margin:auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between;gap:30px;min-height:88px}
+.persora-home-link{flex-shrink:0}.persora-header .persora-brand-logo{width:142px;max-height:66px}
+.persora-desktop-links{display:flex;align-items:center;gap:27px;font-size:14px;font-weight:600}
+.persora-desktop-links a{padding:12px 0}.persora-desktop-links a:hover{color:#c2410c}
+.persora-header-actions{display:flex;align-items:center;gap:20px}.persora-header-phone{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:750;white-space:nowrap}
+.persora-header-quote{display:flex;align-items:center;gap:12px;background:#c2410c;color:white;padding:13px 17px;font-size:13px;font-weight:700;border-radius:8px;white-space:nowrap}
+.persora-header-quote:hover,.persora-cta-primary:hover{background:#9a3412}.persora-menu-toggle,.persora-mobile-links,.persora-mobile-call{display:none}
+.persora-header a:focus-visible,.persora-header button:focus-visible,.persora-hero a:focus-visible{outline:3px solid #f59e0b;outline-offset:5px}
+.persora-hero{position:relative;overflow:hidden;background:#0b3550;color:white;scroll-margin-top:90px}
+.persora-hero-photo{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center 43%;inset:0}
+.persora-hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,30,47,.96) 0%,rgba(6,30,47,.87) 34%,rgba(6,30,47,.35) 65%,rgba(6,30,47,.03) 100%)}
+.persora-hero-inner{position:relative;max-width:1280px;margin:auto;padding:40px 32px 36px}
+.persora-hero-copy{max-width:650px}.persora-hero-eyebrow{display:flex;align-items:center;gap:7px;color:#d4e5ed;font-size:11px;letter-spacing:.13em;font-weight:650;margin-bottom:18px}
+.persora-hero h1{font-size:clamp(38px,4vw,54px);line-height:1.05;letter-spacing:-.035em;font-weight:750;color:white;margin:0 0 16px}
+.persora-hero-service{font-size:18px;font-weight:650;color:#f8fafc;margin-bottom:10px}
+.persora-hero h1.persora-hero-location{font-size:clamp(25px,2.6vw,34px);line-height:1.2;letter-spacing:-.02em;margin-bottom:12px;color:#d4e5ed}
+.persora-hero-promise{font-size:clamp(31px,3.3vw,44px);line-height:1.1;letter-spacing:-.035em;font-weight:750;color:white;margin:0 0 20px;max-width:650px}
+.persora-hero-description{font-size:16px;line-height:1.6;color:#dbe5ec;margin-bottom:23px}
+.persora-hero-buttons{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.persora-hero-buttons a{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 18px;border-radius:8px;font-size:14px;font-weight:700;transition:background .15s}
+.persora-cta-primary{background:#c2410c;color:white}.persora-cta-whatsapp{background:#15803d;color:white}.persora-cta-whatsapp:hover{background:#166534}
+.persora-hero-notes{display:flex;align-items:center;flex-wrap:wrap;gap:18px;color:#d4e5ed;font-size:12px;margin-top:20px}.persora-hero-notes span{display:flex;align-items:center;gap:6px}.persora-hero-notes span+span{padding-left:18px;border-left:1px solid #ffffff45}
+#trabajos,#zonas,#contacto{scroll-margin-top:105px}
+@media(max-width:1100px){.persora-header-inner{gap:20px}.persora-desktop-links{gap:18px}.persora-header-actions{gap:14px}.persora-header-quote{display:none}}
+@media(max-width:760px){.persora-header-inner{min-height:74px;padding:10px 18px;gap:12px}.persora-header .persora-brand-logo{width:119px;max-height:54px}.persora-desktop-links{display:none}.persora-header-actions{gap:17px}.persora-header-phone{font-size:14px}.persora-header-phone>span:not(.persora-mobile-call){display:none}.persora-mobile-call{display:inline}.persora-menu-toggle{display:flex;align-items:center;justify-content:center;background:#f1f5f9;border:1px solid #d7e2eb;border-radius:8px;width:44px;height:44px;color:#0b3550}.persora-mobile-links{display:grid;padding:8px 18px 18px;border-top:1px solid #e2e8f0;box-shadow:0 10px 18px #0b355010}.persora-mobile-links a{display:flex;align-items:center;justify-content:space-between;padding:13px 8px;border-bottom:1px solid #edf2f6;font-size:15px;font-weight:600}.persora-hero-inner{padding:34px 22px}.persora-hero-copy{max-width:500px}.persora-hero h1{font-size:42px}.persora-hero-photo{object-position:65% center}.persora-hero-overlay{background:linear-gradient(90deg,rgba(6,30,47,.94),rgba(6,30,47,.80) 70%,rgba(6,30,47,.65))}.persora-hero-service{font-size:17px}.persora-hero-description{font-size:15px}.persora-hero-buttons{gap:10px;align-items:stretch;flex-direction:column;max-width:330px}.persora-hero-buttons a{font-size:14px;min-height:49px}.persora-hero-notes{gap:10px;font-size:11px}.persora-hero-notes span+span{padding-left:10px}.persora-hero-eyebrow{font-size:10px}.persora-desktop-break{display:none}#trabajos,#zonas,#contacto{scroll-margin-top:90px}}
+@media(prefers-reduced-motion:reduce){.persora-hero-buttons a{transition:none}}
+
+/* Segunda etapa: tarjetas de servicios con la identidad de la portada. */
+.persora-services{padding:48px 24px 52px;background:#fff;scroll-margin-top:100px}
+.persora-services .reference-services-inner{max-width:1180px}
+.persora-services-heading{max-width:700px;margin:0 auto 30px;text-align:center}
+.persora-section-eyebrow{font-size:11px;font-weight:750;letter-spacing:.14em;color:#526477}
+.persora-services h2{color:#0b3550;font-size:32px;font-weight:700;letter-spacing:-.025em;line-height:1.2;margin:9px 0 12px}
+.persora-services-heading>p{color:#526477;font-size:16px;line-height:1.6;margin:0}
+.persora-services .reference-service-grid{gap:22px;align-items:start}
+.persora-services .reference-service-card{text-align:left;padding:25px 26px 23px;border:1px solid #d7e2eb;border-radius:12px;background:#f8fafc;box-shadow:none}
+.persora-services .reference-service-icon{margin:0 0 18px;width:76px;height:67px;color:#0b3550}
+.persora-services .reference-service-icon svg:first-child{width:76px;height:67px}
+.persora-services .reference-icon-overlay{color:#0b3550;background:#f8fafc;right:-4px;bottom:0}
+.persora-services .reference-service-card h3{font-size:23px;line-height:1.25;color:#0b3550;margin:0 0 12px;font-weight:700}
+.persora-services .reference-service-summary{font-size:15px;line-height:1.65;min-height:75px;max-width:none;color:#526477;margin:0 0 18px}
+.persora-services .reference-service-price{font-size:13px;color:#526477;margin:0 0 19px;font-weight:500}
+.persora-services .reference-service-price strong{font-size:23px;color:#0b3550;font-weight:700}
+.persora-services .reference-service-more{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid #b8cbd8;border-radius:7px;padding:12px 14px;min-height:46px;color:#0b3550;font-size:14px;font-weight:650;cursor:pointer}
+.persora-services .reference-service-more:hover{background:#edf4fa;border-color:#0b3550}
+.persora-services .reference-service-more[aria-expanded=true] svg{transform:rotate(180deg)}
+.persora-services .reference-service-more:focus-visible,.persora-services .reference-service-detail a:focus-visible{outline:3px solid #c2410c;outline-offset:4px}
+.persora-services .reference-service-detail{color:#334155;font-size:14px;line-height:1.65;border-color:#d7e2eb;padding-top:16px;margin-top:20px}
+.persora-services .reference-service-detail p{margin:0 0 10px}
+.persora-services .reference-service-detail a{display:inline-flex;align-items:center;gap:6px;color:#1d4ed8;text-decoration:underline;text-underline-offset:4px;font-weight:650}
+@media(max-width:760px){.persora-services{padding:32px 20px 36px}.persora-services h2{font-size:27px}.persora-services-heading{margin-bottom:24px}.persora-services-heading>p{font-size:15px}.persora-services .reference-service-grid{grid-template-columns:1fr;gap:16px}.persora-services .reference-service-summary{min-height:0}.persora-services .reference-service-card{padding:23px}.persora-services .reference-service-icon{float:right;margin:0 0 12px 18px;width:65px;height:58px}.persora-services .reference-service-icon svg:first-child{width:65px;height:58px}.persora-services .reference-service-price{clear:both}.persora-services .reference-service-more{clear:both}}
+
+/* Sistema visual común a toda la web. */
+.persora-skip-link{position:fixed;top:8px;left:12px;z-index:100;background:#fff;color:#0b3550;padding:12px 18px;transform:translateY(-150%);border:2px solid #0b3550;border-radius:6px}.persora-skip-link:focus{transform:translateY(0)}
+.persora-site{color:#334155;background:#fff;overflow-wrap:break-word;padding-bottom:0}
+.persora-site main h2{font-size:32px;line-height:1.22;letter-spacing:-.025em;font-weight:700}
+.persora-site main h3{font-weight:650;line-height:1.35}
+.persora-site main>section:not(.persora-hero):not(.reference-brand-strip):not(#resumen-servicios){padding-top:52px;padding-bottom:52px;border-width:0}
+.persora-site main>section .mb-16{margin-bottom:30px}.persora-site main>section .gap-16{gap:40px}
+.persora-site main .text-slate-900,.persora-site main .text-blue-900,.persora-site main .text-blue-800{color:#0b3550}
+.persora-site main .text-blue-600{color:#0b3550}.persora-site main .text-orange-500,.persora-site main .text-orange-600{color:#c2410c}
+.persora-site main .font-black{font-weight:700}.persora-site main .shadow-xl,.persora-site main .shadow-2xl{box-shadow:0 8px 24px #0b35500a}
+.persora-site main .border-2{border-width:1px}.persora-site main .rounded-2xl{border-radius:12px}
+.persora-site main .bg-orange-500{background:#c2410c}.persora-site main .bg-green-600,.persora-site main .bg-green-500{background:#15803d}
+.persora-site main a:hover{transform:none}.persora-site main button:hover{transform:none}
+.persora-site main>section .text-xl{font-size:17px;line-height:1.7}
+.persora-site main>section .text-4xl{font-size:32px}
+.persora-site .reference-brand-strip{background:#f8fafc}
+.persora-site #resumen-servicios{background:#0b3550}
+.persora-site main>section.bg-blue-900{background:#0b3550}
+.persora-site #resumen-servicios .font-black{font-weight:700}
+.persora-site #zonas a.rounded-xl{border-color:#d7e2eb;border-radius:8px;color:#0b3550;box-shadow:none}
+.persora-site #zonas a.rounded-xl:hover{background:#edf4fa;border-color:#0b3550}
+.persora-site #zonas .rounded-3xl{border-radius:14px;border-width:1px;box-shadow:0 8px 24px #0b35500b}
+.persora-site #zonas .bg-blue-900{background:#0b3550}
+.persora-site #zonas .bg-orange-500{background:#c2410c}
+.persora-site #trabajos{background:#f5f8fc}
+.persora-site #trabajos img{object-fit:cover}
+.persora-site #precios{background:#fff}
+.persora-site #precios table{font-size:15px;min-width:560px}
+.persora-site #precios .bg-blue-900{background:#0b3550}
+.persora-site #preguntas{background:#f5f8fc;scroll-margin-top:100px}
+.persora-site #preguntas button{padding:20px 22px}
+.persora-site #preguntas button>span{font-size:16px;font-weight:600}
+.persora-site #contacto .bg-blue-50{background:#edf4fa}.persora-site #contacto .bg-blue-900{background:#0b3550}
+.persora-site #contacto h2{color:#0b3550}.persora-site #contacto h3{font-size:16px}
+.persora-site a:focus-visible,.persora-site button:focus-visible,.persora-site summary:focus-visible{outline:3px solid #c2410c;outline-offset:4px}
+.persora-content-width{max-width:1180px;margin:auto;padding-left:24px;padding-right:24px}
+.persora-section-heading{text-align:center;max-width:700px;margin:0 auto 32px}
+.persora-section-heading h2{margin:10px 0 14px;color:#0b3550}
+.persora-section-heading p{font-size:16px;line-height:1.7;color:#526477}
+.persora-process{background:#edf4fa}
+.persora-process-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.persora-process-grid article{padding:27px;border:1px solid #d7e2eb;border-radius:12px;background:#fff}
+.persora-process-grid article>span{display:inline-flex;width:42px;height:42px;align-items:center;justify-content:center;border-radius:50%;background:#edf4fa;font-weight:750;color:#0b3550;font-size:14px;margin-bottom:20px}
+.persora-process-grid h3{font-size:20px;margin:0 0 12px;color:#0b3550}
+.persora-process-grid p{font-size:15px;line-height:1.7;color:#526477;margin:0}
+.persora-process-grid svg{color:#0b3550;margin-bottom:18px}
+.persora-advice{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
+.persora-advice h2{color:#0b3550;margin:12px 0 18px}
+.persora-advice p{font-size:16px;line-height:1.8;margin:0 0 16px}
+.persora-advice ul{list-style:none;padding:0;margin:0}
+.persora-advice li{display:flex;align-items:start;gap:12px;padding:14px 0;border-bottom:1px solid #d7e2eb;line-height:1.7;font-size:16px}
+.persora-advice li svg{flex-shrink:0;color:#15803d;margin-top:5px}
+.persora-text-link{display:inline-flex;align-items:center;gap:10px;color:#1d4ed8;font-weight:650;text-decoration:underline;text-underline-offset:4px;font-size:14px}
+.persora-about{background:white}
+.persora-service-hero{background:#edf4fa}
+.persora-service-hero-grid{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:48px}
+.persora-service-hero h1,.persora-local-hero h1{font-size:44px;color:#0b3550;line-height:1.15;font-weight:750;letter-spacing:-.035em;margin:14px 0 20px}
+.persora-service-hero p,.persora-local-hero p{font-size:16px;line-height:1.75;max-width:680px;margin:0 0 20px}
+.persora-service-hero .persora-service-intro{font-size:23px;font-weight:600;color:#0b3550;line-height:1.4}
+.persora-service-hero figure{margin:0}.persora-service-hero figure img{width:100%;height:340px;object-fit:cover;border-radius:12px}
+.persora-service-hero figcaption{font-size:12px;color:#526477;margin-top:8px}
+.persora-breadcrumb{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:#526477;font-size:13px;margin-bottom:28px}
+.persora-breadcrumb a{text-decoration:underline;text-underline-offset:3px}
+.persora-faq-width{max-width:860px;margin:auto;padding:0 24px}
+.persora-faq-item{background:#fff;border:1px solid #d7e2eb;border-radius:10px;margin-bottom:12px}
+.persora-faq-item summary{cursor:pointer;padding:20px;font-size:16px;font-weight:650;color:#0b3550}
+.persora-faq-item p{padding:0 20px 20px;line-height:1.75;font-size:15px;margin:0}
+.persora-soft{background:#f5f8fc}
+.persora-related .persora-content-width>div{display:flex;gap:16px;margin-top:24px;flex-wrap:wrap}
+.persora-related a{display:inline-flex;align-items:center;gap:20px;padding:18px 22px;border:1px solid #d7e2eb;border-radius:8px;color:#0b3550;font-size:15px;font-weight:650}
+.persora-local-hero{background:#edf4fa}
+.persora-site .persora-brand-banner{background:#0b3550}
+.persora-barrio main>section:first-child+.persora-brand-banner{padding:26px 0}
+.persora-barrio main>section .text-orange-400{color:#c2410c}
+.persora-footer{background:#08283d;color:#c8d7e2;padding:44px 24px 0}
+.persora-footer-inner{max-width:1180px;margin:auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.1fr;gap:36px;padding-bottom:36px}
+.persora-footer img{background:#fff;padding:9px;border-radius:8px;width:150px;height:auto;margin-bottom:18px}
+.persora-footer h2{font-size:15px;color:white;font-weight:650;margin:0 0 20px}
+.persora-footer p,.persora-footer address{font-size:13px;line-height:1.8;font-style:normal}
+.persora-footer a{display:block;font-size:13px;margin-bottom:12px;line-height:1.5;color:#d8e5ee}
+.persora-footer a:hover{text-decoration:underline}
+.persora-footer-bottom{border-top:1px solid #ffffff20;max-width:1180px;margin:auto;padding:20px 0;font-size:12px;color:#b8cbd8}
+.persora-contact-bar{position:fixed;right:18px;bottom:18px;z-index:45;display:flex;gap:8px;box-shadow:0 4px 20px #0b35501a;border-radius:10px;background:white;padding:6px;border:1px solid #d7e2eb}
+.persora-contact-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;font-size:13px;font-weight:650;color:#0b3550;border-radius:6px}
+.persora-contact-bar a:last-child{background:#15803d;color:white}
+.persora-gallery-range{width:100%;accent-color:#0b3550}
+.persora-site .persora-service-hero .persora-service-price{font-size:22px;font-weight:700;color:#0b3550;margin:0 0 20px}
+#solicitud{scroll-margin-top:100px}
+.persora-zone-request{background:#edf4fa;text-align:center}
+.persora-zone-request h2{color:#0b3550;margin:0 0 14px}
+.persora-zone-request p{color:#526477;margin:0 0 22px;font-size:16px}
+.persora-zone-request a{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:8px;font-size:15px;font-weight:700}
+.persora-request-section{background:#edf4fa}
+.persora-request-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.persora-request-intro{padding-top:24px;position:sticky;top:120px}
+.persora-request-intro h2{font-size:38px!important;color:#0b3550;margin:14px 0 22px;max-width:450px}
+.persora-request-intro>p{color:#526477;font-size:16px;line-height:1.8;max-width:430px}
+.persora-request-direct{margin-top:30px;padding-top:25px;border-top:1px solid #c9d9e4}
+.persora-request-direct h3{font-size:17px;color:#0b3550;margin:0 0 10px}
+.persora-request-direct p{font-size:14px;line-height:1.7;color:#526477;margin:0 0 20px}
+.persora-request-direct a{display:flex;align-items:center;gap:9px;color:#0b3550;font-size:15px;font-weight:700;margin-top:17px;line-height:1.6}
+.persora-request-direct a:last-child{color:#166534;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.persora-request-form{background:white;border:1px solid #d7e2eb;border-radius:18px;padding:30px;box-shadow:0 8px 28px #0b355005}
+.persora-request-form>h3{font-size:23px;color:#0b3550;margin:0 0 8px}
+.persora-request-hint{font-size:13px;color:#526477;margin-bottom:24px}
+.persora-request-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px}
+.persora-request-form label,.persora-request-form legend{display:block;color:#0b3550;font-size:13px;font-weight:650;line-height:1.5}
+.persora-request-form input:not([type=radio]),.persora-request-form select,.persora-request-form textarea{display:block;width:100%;min-width:0;min-height:48px;border:1px solid #b8cbd8;border-radius:9px;background:#fff;color:#0b3550;padding:12px 13px;margin-top:7px;font:400 14px/1.5 Inter,system-ui,sans-serif}
+.persora-request-form input::placeholder,.persora-request-form textarea::placeholder{color:#64748b;opacity:1}
+.persora-request-form select{padding-right:28px;text-overflow:ellipsis}
+.persora-request-form input:focus-visible,.persora-request-form select:focus-visible,.persora-request-form textarea:focus-visible{outline:2px solid #0b3550;outline-offset:2px}
+.persora-request-preference{border:0;padding:0;margin:22px 0}
+.persora-request-preference legend{margin-bottom:8px}
+.persora-request-preference label{display:flex;align-items:center;gap:11px;border:1px solid #b8cbd8;border-radius:9px;padding:12px 15px;min-height:47px;font-weight:400;margin-bottom:7px;cursor:pointer}
+.persora-request-preference label:has(input:checked){border-color:#0b3550;background:#f5f8fc}
+.persora-request-preference input{accent-color:#0b3550;width:17px;height:17px}
+.persora-request-form textarea{resize:vertical;min-height:100px}
+.persora-request-disclosure{font-size:12px;line-height:1.7;color:#526477;margin:19px 0}
+.persora-request-submit{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;min-height:52px;padding:14px 18px;background:#15803d;color:#fff;border:0;border-radius:9px;font-size:15px;font-weight:700;cursor:pointer}
+.persora-request-submit:hover{background:#166534}
+.persora-request-status{padding:14px;background:#f0fdf4;border:1px solid #bbdcc5;border-radius:8px;margin-top:16px;font-size:13px;line-height:1.7;color:#14532d}
+.persora-request-status p{margin:0 0 6px}.persora-request-status a{font-weight:650;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.persora-request-layout{gap:28px;grid-template-columns:.8fr 1.2fr}.persora-request-form{padding:24px}.persora-request-intro h2{font-size:32px!important}}
+@media(max-width:760px){.persora-request-layout{grid-template-columns:1fr;gap:28px;padding-left:18px;padding-right:18px}.persora-request-intro{position:static;padding-top:0}.persora-request-intro h2{font-size:28px!important;margin-bottom:15px}.persora-request-fields{grid-template-columns:1fr;gap:16px}.persora-request-form{padding:23px 18px;border-radius:12px}.persora-request-direct{margin-top:23px;padding-top:20px}.persora-request-submit{font-size:14px;gap:8px}.persora-request-intro>p{font-size:15px}}
+.persora-contact-intro{background:#fff}
+.persora-contact-intro h1{max-width:840px;font-size:44px;line-height:1.15;letter-spacing:-.035em;font-weight:750;color:#0b3550;margin:14px 0 20px}
+.persora-contact-intro>.persora-content-width>p{max-width:760px;font-size:17px;line-height:1.75;margin:0;color:#526477}
+.persora-contact-prepare{background:#f5f8fc}
+.persora-contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 36px;margin-top:28px}
+@media(max-width:760px){.persora-contact-intro h1{font-size:34px}.persora-contact-intro>.persora-content-width>p{font-size:16px}.persora-contact-page #contacto>div{padding-left:16px;padding-right:16px}.persora-contact-links{justify-content:flex-start}}
+/* Menú desplegable compartido, con tarjetas y categorías. */
+.persora-mega-header .persora-header-inner{min-height:92px;gap:34px}
+.persora-mega-header .persora-desktop-links{margin-left:auto;gap:32px}
+.persora-mega-header .persora-desktop-links>button,.persora-mega-header .persora-desktop-links>a{display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:15px 0;color:#0b3550;font-size:14px;font-weight:700;text-transform:uppercase;cursor:pointer}
+.persora-mega-header .persora-desktop-links>button[aria-expanded=true]{color:#c2410c}
+.persora-mega-header .persora-desktop-links>button[aria-expanded=true] svg{transform:rotate(180deg)}
+.persora-phone-pill{display:flex;align-items:center;gap:11px;border:1px solid #c2410c;border-radius:999px;padding:9px 10px 9px 17px;color:#0b3550;background:#fff;white-space:nowrap;font-size:14px;font-weight:750;min-height:50px;box-shadow:0 3px 10px #0b355008}
+.persora-phone-pill:hover{background:#fff7f1}.persora-phone-pill-arrow{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid #e9b9a5;border-radius:50%;color:#c2410c}
+.persora-mega-panel{position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 105px);overflow-y:auto;overscroll-behavior:contain;background:#fff;border-top:2px solid #c2410c;border-bottom:1px solid #d7e2eb;box-shadow:0 18px 26px #0b355018}
+.persora-mega-inner{max-width:1280px;margin:auto;padding:18px 28px 20px}
+.persora-mega-categories{display:flex;gap:10px;margin-bottom:16px}
+.persora-mega-categories>button{display:flex;align-items:center;justify-content:center;background:white;border:1px solid #d7e2eb;border-radius:10px;min-height:48px;padding:12px 28px;min-width:170px;font-size:14px;color:#0b3550;font-weight:700;cursor:pointer}
+.persora-mega-categories>button[aria-pressed=true]{background:#fff7f1;border-color:#c2410c;color:#9a3412}
+.persora-mega-categories>button.persora-mega-close{margin-left:auto;min-width:44px;padding:10px;border-color:transparent}
+.persora-mega-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.persora-mega-service{display:flex;justify-content:space-between;gap:12px;border:1px solid #d7e2eb;border-radius:10px;overflow:hidden;background:#fff;min-height:124px}
+.persora-mega-service>span{display:flex;flex-direction:column;justify-content:center;padding:18px 0 18px 18px}
+.persora-mega-service strong,.persora-mega-info strong{font-size:16px;line-height:1.4;color:#0b3550;font-weight:700}
+.persora-mega-service small,.persora-mega-info small{display:block;font-size:12px;line-height:1.6;color:#526477;margin-top:7px}
+.persora-mega-service img{display:block;flex:0 0 105px;width:105px;max-width:32%;height:124px;object-fit:cover}
+.persora-mega-service:hover,.persora-mega-zones a:hover,.persora-mega-info a:hover{background:#f5f8fc;border-color:#9eb6c6}
+.persora-mega-bottom{display:inline-flex;align-items:center;gap:9px;margin-top:17px;color:#9a3412;text-decoration:underline;text-underline-offset:4px;font-size:13px;font-weight:650}
+.persora-mega-zones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.persora-mega-zones a{display:flex;align-items:center;gap:10px;border:1px solid #d7e2eb;padding:14px 15px;border-radius:8px;font-size:14px;color:#0b3550;font-weight:600;min-height:48px}
+.persora-mega-zones a>svg{flex-shrink:0}.persora-mega-zones a>svg:last-child{margin-left:auto;color:#c2410c}
+.persora-mega-info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.persora-mega-info a{position:relative;display:block;padding:22px 42px 22px 20px;border:1px solid #d7e2eb;border-radius:10px}
+.persora-mega-info a>svg{position:absolute;right:18px;top:26px;color:#c2410c}
+@media(max-width:900px){.persora-mega-header .persora-header-inner{gap:22px}.persora-mega-header .persora-desktop-links{gap:19px}.persora-mega-zones{grid-template-columns:repeat(3,minmax(0,1fr))}.persora-mega-service img{flex-basis:80px;width:80px}.persora-mega-service strong{font-size:14px}}
+@media(max-width:760px){.persora-mega-header .persora-header-inner{min-height:76px;padding:10px 16px;gap:12px}.persora-mega-header .persora-desktop-links{display:none}.persora-mega-header .persora-header-actions{gap:10px}.persora-phone-pill{font-size:12px;gap:7px;min-height:44px;padding:9px 12px}.persora-phone-pill-arrow{display:none}.persora-mega-panel{max-height:calc(100dvh - 90px)}.persora-mega-inner{padding:14px 16px 20px}.persora-mega-categories{gap:7px}.persora-mega-categories>button{min-width:0;flex:1;padding:10px 8px;font-size:12px;min-height:44px;border-radius:8px}.persora-mega-categories>button.persora-mega-close{display:none}.persora-mega-services,.persora-mega-info{grid-template-columns:1fr;gap:10px}.persora-mega-service{min-height:100px}.persora-mega-service img{height:100px;width:100px;flex-basis:100px}.persora-mega-service strong{font-size:15px}.persora-mega-service>span{padding:14px 0 14px 15px}.persora-mega-zones{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.persora-mega-zones a{font-size:12px;padding:12px 10px;gap:6px}.persora-mega-zones a>svg:last-child{display:none}}
+@media(max-width:380px){.persora-mega-header .persora-brand-logo{width:103px}.persora-phone-pill{padding:9px;font-size:11px}.persora-phone-pill>svg{width:14px}.persora-mega-header .persora-header-actions{gap:6px}}
+.persora-compare{position:relative;isolation:isolate;width:100%;height:300px;overflow:hidden;cursor:ew-resize;touch-action:pan-y;user-select:none;background:#e2e8f0}
+.persora-site #trabajos .persora-compare>img,.persora-site #trabajos .persora-compare-before-layer>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;pointer-events:none}
+.persora-compare-before-layer{position:absolute;inset:0;z-index:1;overflow:hidden}
+/* El montante central ocupa el 40,7 % del original; ambas fotos comparten encuadre. */
+.persora-site #trabajos .persora-compare--centered-window>img,.persora-site #trabajos .persora-compare--centered-window .persora-compare-before-layer>img{inset:auto;top:0;left:50%;width:auto;min-width:123%;height:100%;transform:translateX(-40.7%)}
+.persora-compare-after{z-index:0}.persora-compare-before{z-index:1}
+.persora-compare-label{position:absolute;top:14px;z-index:3;background:#0b3550;color:#fff;padding:6px 11px;border-radius:6px;font-size:11px;font-weight:750;letter-spacing:.06em;pointer-events:none}
+.persora-compare-label-before{left:14px}.persora-compare-label-after{right:14px}
+.persora-compare-divider{position:absolute;top:0;bottom:0;width:3px;background:#fff;z-index:2;box-shadow:0 0 8px #0005;transform:translateX(-50%);pointer-events:none}
+.persora-compare-divider>span{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #d7e2eb;color:#0b3550;box-shadow:0 2px 10px #0003}
+.persora-compare-control{position:absolute;bottom:12px;left:20px;right:20px;z-index:4;background:#fffffff0;border:1px solid #d7e2eb;border-radius:8px;padding:7px 12px;cursor:default;display:flex;align-items:center;gap:14px;color:#0b3550;font-size:11px;font-weight:650}
+.persora-compare-control span{white-space:nowrap}.persora-compare-control input{width:100%;min-width:0;min-height:28px;accent-color:#0b3550;cursor:ew-resize;touch-action:pan-x}
+.persora-compare-control input:focus-visible{outline:3px solid #c2410c;outline-offset:3px}
+@media(max-width:760px){.persora-compare{height:270px}.persora-compare-control{left:12px;right:12px;gap:10px}.persora-compare-control span{font-size:10px}}
+.persora-fault-help{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px;padding:24px 28px;background:#edf4fa;border:1px solid #d7e2eb;border-radius:12px}
+.persora-fault-help h3{font-size:20px;color:#0b3550;margin:0 0 5px}
+.persora-fault-help p{font-size:16px;line-height:1.6;color:#526477;margin:0}
+.persora-fault-help a{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;min-height:48px;background:#15803d;color:#fff;border-radius:8px;font-size:14px;font-weight:700;white-space:nowrap}
+.persora-fault-help a:hover{background:#166534}
+@media(max-width:760px){.persora-fault-help{flex-direction:column;align-items:stretch;gap:18px;padding:23px}.persora-fault-help h3{font-size:19px}.persora-fault-help p{font-size:15px}.persora-fault-help a{white-space:normal;text-align:center}}
+.persora-site .persora-reviews{background:#fff;color:#334155}
+.persora-reviews .backdrop-blur-sm{background:#f8fafc;border:1px solid #d7e2eb;border-radius:12px;backdrop-filter:none}
+.persora-reviews h2,.persora-reviews .font-black.text-white{color:#0b3550}
+.persora-reviews .bg-white\/10:not(.backdrop-blur-sm){background:#edf4fa;color:#0b3550}
+.persora-reviews .text-blue-100{color:#334155}
+.persora-reviews .text-blue-200,.persora-reviews .text-blue-300,.persora-reviews .text-blue-400{color:#526477}
+.persora-reviews .text-right .bg-orange-500{background:#edf4fa;color:#0b3550;border-radius:6px}
+.persora-reviews .items-end{gap:14px;flex-wrap:wrap}
+.persora-reviews .text-right{text-align:left}
+@media(max-width:760px){.persora-site{padding-bottom:70px}.persora-site main>section:not(.persora-hero):not(.reference-brand-strip):not(#resumen-servicios){padding-top:36px;padding-bottom:36px}.persora-site main h2,.persora-site main>section .text-4xl{font-size:27px}.persora-site main>section .text-xl{font-size:16px}.persora-site main>section .gap-16{gap:26px}.persora-site main>section .p-8{padding:23px}.persora-process-grid,.persora-advice,.persora-service-hero-grid{grid-template-columns:1fr;gap:20px}.persora-process-grid article{padding:23px}.persora-advice{gap:14px}.persora-service-hero h1,.persora-local-hero h1{font-size:34px}.persora-service-hero figure img{height:230px}.persora-service-hero .persora-service-intro{font-size:20px}.persora-footer-inner{grid-template-columns:1fr 1fr;gap:28px 20px}.persora-footer-inner>div:first-child{grid-column:1/-1}.persora-footer a{overflow-wrap:anywhere}.persora-contact-bar{left:0;right:0;bottom:0;border-radius:0;border-width:1px 0 0;padding:8px 16px;padding-bottom:max(8px,env(safe-area-inset-bottom));gap:12px}.persora-contact-bar a{flex:1;min-height:44px;font-size:14px}.persora-site #zonas .grid-cols-2{grid-template-columns:1fr}.persora-site #contacto .text-2xl{font-size:23px}.persora-site #contacto a.bg-green-600{font-size:14px;padding:13px 16px}.persora-site #contacto iframe{height:280px}}

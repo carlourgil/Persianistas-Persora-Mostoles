@@ -1,0 +1,36 @@
+---
+import '../../client/src/index.css';
+import interBodyFont from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import poppinsHeadingFont from '@fontsource/poppins/files/poppins-latin-800-normal.woff2?url';
+import { businessStructuredData, buildPageStructuredData, serializeStructuredData, siteUrl } from '../../client/src/lib/structuredData';
+interface Props { title: string; description: string; path: string; noindex?: boolean }
+const { title, description, path, noindex = false } = Astro.props;
+const canonical = `${siteUrl}${path}`;
+const pageSchema = noindex ? null : buildPageStructuredData(path);
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex' : 'index, follow'} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/favicon-persora.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="es_ES" />
+    <link rel="preload" href={interBodyFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={poppinsHeadingFont} as="font" type="font/woff2" crossorigin />
+    <script is:inline id="persora-business-schema" type="application/ld+json" set:html={serializeStructuredData(businessStructuredData)} />
+    {pageSchema && <script is:inline id="persora-page-schema" type="application/ld+json" set:html={serializeStructuredData(pageSchema)} />}
+  </head>
+  <body>
+    <slot />
+    <noscript><style is:inline>.persora-menu-toggle,.persora-desktop-links button,.coverage-map-frame,.persora-compare-control,.persora-request-form{display:none!important}.persora-faq-answer[hidden]{display:block!important}</style><p style="padding:1rem;text-align:center">Puedes consultar nuestros servicios y zonas mediante los enlaces de esta página. Para pedir presupuesto, <a href="tel:+34622320480">llama al 622 32 04 80</a> o <a href="https://wa.me/34622320480">escríbenos por WhatsApp</a>. Los controles interactivos necesitan JavaScript.</p></noscript>
+  </body>
+</html>

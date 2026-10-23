@@ -1,0 +1,18 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { siteRoutes } from '../lib/routes';
+import Home from '../../client/src/pages/Home';
+import Contact from '../../client/src/pages/Contact';
+import ServicePage from '../../client/src/pages/ServicePage';
+import BarrioPage from '../../client/src/components/BarrioPage';
+export function getStaticPaths() {
+  return siteRoutes.map(route => ({ params: { page: route.path === '/' ? undefined : route.path.slice(1) }, props: { route } }));
+}
+const { route } = Astro.props;
+---
+<SiteLayout title={route.title} description={route.description} path={route.path}>
+  {route.type === 'home' && <Home client:load />}
+  {route.type === 'contact' && <Contact client:load />}
+  {route.type === 'service' && route.service && <ServicePage kind={route.service} client:load />}
+  {route.type === 'zone' && route.zone && <BarrioPage data={route.zone} client:load />}
+</SiteLayout>
