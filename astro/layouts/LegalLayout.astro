@@ -1,0 +1,28 @@
+---
+import SiteLayout from './SiteLayout.astro';
+import SiteHeader from '../../client/src/components/SiteHeader';
+import { SiteFooter } from '../../client/src/components/SiteChrome';
+const { title, path } = Astro.props;
+---
+<SiteLayout title={`${title} | Persianas Persora`} description={`${title} de Persianas Persora, marca de Armada Digital Seo S.L.`} path={path} noindex>
+  <div class="persora-site">
+    <SiteHeader client:load />
+    <main class="persora-legal persora-content-width">
+      <nav aria-label="Ruta de navegación"><a href="/">Inicio</a> / {title}</nav>
+      <h1>{title}</h1>
+      <p>Última actualización: 23 de octubre de 2026.</p>
+      <slot />
+      <nav aria-label="Información legal"><a href="/aviso-legal">Aviso legal</a> · <a href="/politica-de-privacidad">Política de privacidad</a> · <a href="/politica-de-cookies">Política de cookies</a></nav>
+    </main>
+    <SiteFooter />
+  </div>
+</SiteLayout>
+<style>
+  .persora-legal{max-width:960px;padding-top:40px;padding-bottom:64px;color:#0b3550;overflow-wrap:anywhere}
+  .persora-legal :global(h1){font-size:clamp(30px,5vw,44px);margin:28px 0 16px;line-height:1.2}
+  .persora-legal :global(h2){font-size:23px;margin:30px 0 12px}
+  .persora-legal :global(p),.persora-legal :global(li){line-height:1.8;margin-bottom:14px}
+  .persora-legal :global(ul){padding-left:24px;list-style:disc}
+  .persora-legal :global(a){text-decoration:underline;text-underline-offset:3px}
+  .persora-legal nav:last-child{margin-top:40px;border-top:1px solid #dce5ed;padding-top:24px}
+</style>

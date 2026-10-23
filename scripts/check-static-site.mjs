@@ -56,5 +56,16 @@ for (const price of ['75', '170', '290', '60']) assert.ok(home.includes(`Desde $
 assert.ok(home.includes('id="faq-answer-0" hidden=""'));
 assert.ok(read('404.html').includes('name="robots" content="noindex"'));
 assert.ok(read('robots.txt').includes('Sitemap: https://persianistasmostoles.madrid/sitemap.xml'));
+for (const slug of ['aviso-legal', 'politica-de-privacidad', 'politica-de-cookies']) {
+  const legal = read(`${slug}.html`);
+  assert.ok(legal.includes('name="robots" content="noindex"'), `Legal indexable: ${slug}`);
+  assert.ok(!read('sitemap.xml').includes(`/${slug}`), `Legal en sitemap: ${slug}`);
+  assert.equal((legal.match(/<h1\b/g) || []).length, 1, slug);
+  for (const text of ['Armada Digital Seo S.L.', 'B88432091', 'persora24@gmail.com']) assert.ok(legal.includes(text), `${slug}: ${text}`);
+  assert.ok(!legal.includes('cerrajerosmostolesabrefacil'), `Marca anterior en ${slug}`);
+  for (const link of ['aviso-legal', 'politica-de-privacidad', 'politica-de-cookies']) assert.ok(home.includes(`href="/${link}"`), `Enlace legal ausente: ${link}`);
+}
+assert.ok(!home.includes('<iframe'), 'El mapa Google no debe cargarse antes de elegirlo');
+assert.ok(home.includes('Cargar mapa de Google'), 'Falta el control de carga opcional');
 assert.equal(read('google02c302426d72a365.html').trim(), 'google-site-verification: google02c302426d72a365.html');
 console.log('Correcto: 17 páginas Astro con contenido real en HTML, un H1, canónicas y títulos propios, dos bloques de datos estructurados, NAP, recursos, precios, sitemap y verificación.');
